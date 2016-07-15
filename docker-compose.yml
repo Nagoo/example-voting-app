@@ -2,7 +2,7 @@ version: "2"
 
 services:
   vote:
-    build: ./vote
+    image: alvarolazaro/examplevotingapp_vote:latest
     command: python app.py
     ports:
       - "5000:80"
@@ -12,13 +12,13 @@ services:
     ports: ["6379"]
 
   worker:
-    build: ./worker
+    image: alvarolazaro/examplevotingapp_worker:latest
 
   db:
     image: postgres:9.4
 
   result:
-    build: ./result
+    image: alvarolazaro/examplevotingapp_result:latest
     command: nodemon --debug server.js
     ports:
       - "5001:80"
